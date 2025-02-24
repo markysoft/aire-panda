@@ -153,7 +153,7 @@ own database table. Perhaps this could be done in future when clinicians and org
 moved into their own tables.
 
 You might want to check if a record exists before creating a new one, or updating an existing one, rather than 
-relying on an underlying exception being thrown.
+relying on an underlying exception being thrown. 
 
 The default behaviour for the EF model is to cascade patient delete removing the appointment too, this may not 
 be desired.
