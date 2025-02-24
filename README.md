@@ -37,6 +37,11 @@ When starting up the command line will print out the URL, i.e. [http://localhost
 The swagger documentation and tools for calling the API can be found at 
 [http://localhost:5087/swagger/index.html](http://localhost:5087/swagger/index.html).
 
+All tests can be run from the root folder with the command:
+```
+dotnet test
+```
+
 ## Introduction
 
 ### What I didn't implement
