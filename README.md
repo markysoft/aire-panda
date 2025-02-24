@@ -2,18 +2,18 @@
 
 Technical test for AIRE Logic as described in the [Patient-Appointment-Backend](https://github.com/airelogic/tech-test-portal/tree/main/Patient-Appointment-Backend) repository.
 
-## running the project
+## Running the project
 
 The easiest way to build and run the project and tests is from Visual Studio, or your IDE of choice.
 
-Prior to running the project the database migrations will need to be run, either via the Package Manager Console for the 
+Prior to running the project the database migrations will need to be run, via the Package Manager Console for the 
 PandaAPI project:
 ```
 update-database
 ```
 
-Or by running from the command line tools. Full documentation on using the CLI can be found at 
-[https://learn.microsoft.com/en-us/ef/core/cli/](https://learn.microsoft.com/en-us/ef/core/cli/), but to summarise:
+Alternatively use the command line tools. 
+[Full documentation](https://learn.microsoft.com/en-us/ef/core/cli) on using the CLI is available, but to summarise:
 
 Install the CLI tools for your operating system, i.e. 
 https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.406-windows-x64-installer
@@ -37,7 +37,7 @@ When starting up the command line will print out the URL, i.e. [http://localhost
 The swagger documentation and tools for calling the API can be found at 
 [http://localhost:5087/swagger/index.html](http://localhost:5087/swagger/index.html).
 
-All tests can be run from the root folder with the command:
+All tests can be run from the root folder (i.e. one level up from where the migration was run) with the command:
 ```
 dotnet test
 ```
@@ -54,7 +54,7 @@ Here's a summary of what I didn't implement to complete the exercise is a timely
 - I didn't follow the snake case format as implied in the sample data
 
 The validation of the duration and status fields demonstrate the approach I would take, I figured in a 
-real project there would be existing implementations at Aire for NHS number, so would look 
+real project there would be existing implementations at Aire for NHS number validation, so would look 
 there first.
 
 Changing the format to snake-case would be easier enough if required.
@@ -69,7 +69,7 @@ Based on the requirements, I focused on the following functionality:
 - Ensuring the implementation is extendable to support future requirements
 - Unit and integration tests
 
-Handling special characters seemed important as there are legal repurcussions to incorrectly
+Handling special characters seemed important as there are legal repercussions to incorrectly
 holding personal data. It's straight forward to implement, so a quick win to build trust with
 a client.
 
@@ -151,21 +151,19 @@ by clinician or department, which will be useful for future requirements of trac
 For an update via a `PUT` I decided to ensure the identifier (i.e. NHS Number or Appointment ID) in the body is 
 the same as that in the URL. I felt that the resource ID shouldn't change, as it can lead to exploits.
 
-### Technical debt I'd address with more time
+### Technical debt I would address with more time
 
 The status is being held as a string, it would be better to have an enum, and the `Status` normalised into its 
-own database table. Perhaps this could be done in future when clinicians and organisations are mormalised and
+own database table. Perhaps this could be done in future when clinicians and organisations are normalised and
 moved into their own tables.
 
-You might want to check if a record exists before creating a new one, or updating an existing one, rather than 
-relying on an underlying exception being thrown. 
+You also might want to check if a record exists before creating a new one, or updating an existing one, rather than 
+relying on an underlying exception being thrown. There's pros and cons of each approach.
 
 The default behaviour for the EF model is to cascade patient delete removing the appointment too, this may not 
 be desired.
 
 I'd also like to have had the time to improve the Swagger documentation with more details and examples of the 
-format.
+format, rather than putting it in the 'remarks'.
 
 I'd also like to have added style checking to the project, to ensure a consistent code style.
-
-More tests!
