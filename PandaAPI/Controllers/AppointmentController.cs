@@ -19,6 +19,20 @@ namespace PandaAPI.Controllers
         ///
         ///     GET /api/Appointment/d290f1ee-6c54-4b01-90e6-d701748f085
         ///
+        /// The response will be of the format
+        ///     {
+        ///        "id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+        ///        "patient": "1373645350",
+        ///        "status": "active",
+        ///        "time": "2025-02-23T10:00:00",
+        ///        "duration": "1h30m",
+        ///        "clinician": "Dr. John Doe",
+        ///        "department": "Cardiology",
+        ///        "postcode": "N6 2FA"
+        ///     }
+        ///
+        ///     The status should be one of "active", "cancelled", "missed", or "completed"
+        /// 
         /// </remarks>        
         /// <response code="200">Returns the appointment with the specified ID.</response>
         /// <response code="404">If the appointment is not found.</response>
@@ -50,6 +64,9 @@ namespace PandaAPI.Controllers
         ///        "postcode": "N6 2FA"
         ///     }
         ///
+        /// The status should be one of "active", "cancelled", or "completed".
+        /// The "missed" status is computed based on whether an active appointment's time has passed
+        /// and cannot be set directly
         /// </remarks>
         /// <response code="201">Returns the newly created appointment.</response>
         /// <response code="400">If the appointment data is invalid.</response>
@@ -88,7 +105,9 @@ namespace PandaAPI.Controllers
         ///        "department": "Cardiology",
         ///        "postcode": "N6 2FA"
         ///     }
-        ///
+        /// The status should be one of "active", "cancelled", or "completed".
+        /// The "missed" status is computed based on whether an active appointment's time has passed
+        /// and cannot be set directly
         /// </remarks>
         /// <response code="204">If the appointment was successfully updated.</response>
         /// <response code="400">If the appointment data is invalid or the ID does not match.</response>
