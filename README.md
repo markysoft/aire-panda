@@ -4,10 +4,39 @@ Technical test for AIRE Logic as described in the [Patient-Appointment-Backend](
 
 ## running the project
 
-Navigate to the project folder in your terminal and run the following command:
+The easiest way to build and run the project and tests is from Visual Studio, or your IDE of choice.
+
+Prior to running the project the database migrations will need to be run, either via the Package Manager Console for the 
+PandaAPI project:
+```
+update-database
 ```
 
+Or by running from the command line tools. Full documentation on using the CLI can be found at 
+[https://learn.microsoft.com/en-us/ef/core/cli/](https://learn.microsoft.com/en-us/ef/core/cli/), but to summarise:
+
+Install the CLI tools for your operating system, i.e. 
+https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.406-windows-x64-installer
+
+Install the EF CLI extension:
 ```
+dotnet tool install --global dotnet-ef
+```
+
+Navigate to the `PandaAPI` folder in your terminal and run the following command:
+```
+dotnet ef database update
+```
+
+Run the application:
+```
+dotnet run
+```
+
+When starting up the command line will print out the URL, i.e. [http://localhost:5087](http://localhost:5087). 
+The swagger documentation and tools for calling the API can be found at 
+[http://localhost:5087/swagger/index.html](http://localhost:5087/swagger/index.html).
+
 ## Introduction
 
 ### What I didn't implement
@@ -84,6 +113,7 @@ Errors in mapping or persisting records throw an application specific `PandaApiE
 error handling middleware and returned as an appropriate 400 response.
 
 This removes the need for error handling in the controllers, keeping them small.
+
 ### Testing
 
 Given the time contraints, I was pragmatic about testing. I wanted unit tests to cover the business logic, 
@@ -111,13 +141,26 @@ appointment with an `EndTime` in the past will have a status of `missed`.
 Having the appoint duration in this format makes it easier to query for missed appointments, and group them
 by clinician or department, which will be useful for future requirements of tracking missed appointments.
 
+### Potential feature creep?
+
+For an update via a `PUT` I decided to ensure the identifier (i.e. NHS Number or Appointment ID) in the body is 
+the same as that in the URL. I felt that the resource ID shouldn't change, as it can lead to exploits.
+
 ### Technical debt I'd address with more time
 
 The status is being held as a string, it would be better to have an enum, and the `Status` normalised into its 
-own database table.
+own database table. Perhaps this could be done in future when clinicians and organisations are mormalised and
+moved into their own tables.
+
+You might want to check if a record exists before creating a new one, or updating an existing one, rather than 
+relying on an underlying exception being thrown.
+
+The default behaviour for the EF model is to cascade patient delete removing the appointment too, this may not 
+be desired.
 
 I'd also like to have had the time to improve the Swagger documentation with more details and examples of the 
 format.
 
 I'd also like to have added style checking to the project, to ensure a consistent code style.
 
+More tests!
