@@ -1,0 +1,7 @@
+﻿Add-Migration InitialCreation
+Update-Database
+Drop-Database
+
+check collation type
+remove db files
+nhs no is not string

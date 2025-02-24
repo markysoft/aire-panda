@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandaAPI", "PandaAPI\PandaAPI.csproj", "{BD8306D6-C58A-4CC7-9966-4484503190B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandaAPI.Test.Unit", "PandaAPI.Test.Unit\PandaAPI.Test.Unit.csproj", "{935CCE56-7CD2-4076-BF8E-FAE6DAF71C2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandaAPI.Test.Integration", "PandaAPI.Test.Integration\PandaAPI.Test.Integration.csproj", "{06918607-93A1-4C62-879C-A2938C07CAFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD8306D6-C58A-4CC7-9966-4484503190B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD8306D6-C58A-4CC7-9966-4484503190B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD8306D6-C58A-4CC7-9966-4484503190B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD8306D6-C58A-4CC7-9966-4484503190B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{935CCE56-7CD2-4076-BF8E-FAE6DAF71C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{935CCE56-7CD2-4076-BF8E-FAE6DAF71C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{935CCE56-7CD2-4076-BF8E-FAE6DAF71C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{935CCE56-7CD2-4076-BF8E-FAE6DAF71C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06918607-93A1-4C62-879C-A2938C07CAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06918607-93A1-4C62-879C-A2938C07CAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06918607-93A1-4C62-879C-A2938C07CAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06918607-93A1-4C62-879C-A2938C07CAFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5E11BD4-82C1-47E8-8AED-010A0CCB2A62}
+	EndGlobalSection
+EndGlobal
