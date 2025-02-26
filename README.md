@@ -52,12 +52,14 @@ Here's a summary of what I didn't implement to complete the exercise is a timely
 - No localisation
 - there were no requirements for listing or searching, so none implemented
 - I didn't follow the snake case format as implied in the sample data
+- The appointment ID guid is provided by the caller
 
 The validation of the duration and status fields demonstrate the approach I would take, I figured in a 
 real project there would be existing implementations at Aire for NHS number validation, so would look 
 there first.
 
-Changing the format to snake-case would be easier enough if required.
+Changing the format to snake-case would be easier enough if required, as would changing the appointment ID Guid to 
+be a database generated ID.
 
 ### Focus of Functionality
 
